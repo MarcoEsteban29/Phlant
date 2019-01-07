@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "540984706830",
+    "firebase_url": "https://phlant.firebaseio.com",
+    "project_id": "phlant",
+    "storage_bucket": "phlant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540984706830:android:997bb2f1bb81567c",
+        "android_client_info": {
+          "package_name": "com.example.simonh07.phlant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540984706830-clvpavos267u91n8v6mi0dubakmoesk6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.simonh07.phlant",
+            "certificate_hash": "3e5420aed07a5a3406387dd7c8ddfabefc5cba71"
+          }
+        },
+        {
+          "client_id": "540984706830-9qafq1fdk6sf7nft1gu03v0ei7s787mu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsqr6R-FJ1xlWIZ9g4zVSppaiBw6GjJ5Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540984706830-9qafq1fdk6sf7nft1gu03v0ei7s787mu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

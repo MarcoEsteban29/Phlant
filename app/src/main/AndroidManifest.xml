@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,6 @@
         android:roundIcon="@mipmap/plant"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -26,10 +26,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProvider300393110683135"
             android:exported="true" />
+
+        <activity android:name=".ChatBot"
+            android:label="ChatBot"
+            android:theme="@style/AppTheme.NoActionbar"/>
+        <activity android:name=".Lobby"
+            android:theme="@style/AppTheme.NoActionbar"
+            android:label="Lobby"/>
+        <activity android:name=".AboutUs"
+            android:theme="@style/AppTheme.NoActionbar"
+            android:label="About Us"></activity>
     </application>
 
 </manifest>
