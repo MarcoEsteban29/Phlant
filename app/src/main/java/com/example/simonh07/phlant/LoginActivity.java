@@ -120,10 +120,14 @@ public class LoginActivity extends AppCompatActivity {
                     new GraphRequest(currentAccessToken, "me/permissions/", null, HttpMethod.DELETE, new GraphRequest.Callback() {
                         @Override
                         public void onCompleted(GraphResponse response) {
+                           prefss.edit().clear().apply();
+
+
                             LoginManager.getInstance().logOut();
                             Intent intent = new Intent(LoginActivity.this,LoginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
+                            finish();
 
 
                         }
@@ -142,12 +146,22 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent (this,LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+    }
+
 
     private void getData(JSONObject object) {
         try{
 
             URL profile_Picture = new URL("https://graph.facebook.com/"+object.getString("id")+"/picture?width=250&height=250");
-            Picasso.with(this).load(profile_Picture.toString()).into(imgAvatar);
+            Picasso.get().load(profile_Picture.toString()).into(imgAvatar);
             txtEmail.setText(object.getString("email")+"\n"+object.getString("first_name")+" " +object.getString("last_name"));
             Log.d("name",object.getString("first_name")+ " "+object.getString("last_name"));
             Log.d("email",object.getString("email"));

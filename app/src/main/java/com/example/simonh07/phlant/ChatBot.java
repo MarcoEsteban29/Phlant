@@ -3,6 +3,7 @@ package com.example.simonh07.phlant;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -203,6 +204,14 @@ public class ChatBot extends BaseActivity implements AIListener {
         recyclerView.setAdapter(adapter);
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent (this,Lobby.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
     public void ImageViewAnimatedChange(Context c, final ImageView v, final Bitmap new_image) {
         final Animation anim_out = AnimationUtils.loadAnimation(c, R.anim.zoom_out);

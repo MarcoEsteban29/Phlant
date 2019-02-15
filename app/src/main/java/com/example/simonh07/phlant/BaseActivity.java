@@ -45,7 +45,7 @@ public class BaseActivity extends AppCompatActivity {
         email = preferences.getString("email","");
         textView.setText(name+"\n"+ email);
         URL = preferences.getString("photo",uri.toString());
-        Picasso.with(this).load(URL).into(imageView);
+        Picasso.get().load(URL).into(imageView);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
