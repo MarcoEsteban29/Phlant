@@ -516,7 +516,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         }
         Log.d("Temp",String.valueOf(temperature));
         SharedPreferences.Editor editor = getSharedPreferences("Temperature", MODE_PRIVATE).edit();
-        editor.putString("Temp",String.valueOf(temperature) );
+        editor.putFloat("Temp",temperature);
         editor.apply();
 
         // Rain

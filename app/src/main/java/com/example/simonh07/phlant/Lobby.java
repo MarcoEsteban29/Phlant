@@ -1,6 +1,7 @@
 package com.example.simonh07.phlant;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ public class Lobby extends BaseActivity {
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatebase;
     DatabaseReference mRef;
+    float temp; float temps;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +27,23 @@ public class Lobby extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_lobby, contentFrameLayout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.getMenu().getItem(0).setChecked(true);
-
+        SharedPreferences sharedPreferences = getSharedPreferences("Temperature",MODE_PRIVATE);
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mFirebaseDatebase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatebase.getReference("Easy Indoor Plants");
-        Log.d("Condish",mRef.getKey());
+        temps = sharedPreferences.getFloat("Temp",20.0f);
+        Log.d("Temp",String.valueOf(temp));
+        if(temps > 19){
+
+            mRef = mFirebaseDatebase.getReference("19");
+            Log.d("Condish",mRef.getKey());
+        }
+        else
+        {
+            mRef = mFirebaseDatebase.getReference("18");
+            Log.d("Condish",mRef.getKey());
+        }
 
             }
 
