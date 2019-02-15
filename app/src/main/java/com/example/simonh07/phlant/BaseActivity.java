@@ -2,6 +2,7 @@ package com.example.simonh07.phlant;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.simonh07.phlant.activities.MainActivity;
+import com.facebook.login.Login;
 import com.squareup.picasso.Picasso;
 
 public class BaseActivity extends AppCompatActivity {
@@ -37,11 +39,12 @@ public class BaseActivity extends AppCompatActivity {
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         imageView = nView.findViewById(R.id.imageViews);
         textView =nView.findViewById(R.id.textView);
+        Uri uri  = Uri.parse("android.resource://"+this.getPackageName()+"/"+R.drawable.com_facebook_profile_picture_blank_portrait);
         SharedPreferences preferences = getSharedPreferences("Information",MODE_PRIVATE);
         name = preferences.getString("name","");
         email = preferences.getString("email","");
         textView.setText(name+"\n"+ email);
-        URL = preferences.getString("photo","");
+        URL = preferences.getString("photo",uri.toString());
         Picasso.with(this).load(URL).into(imageView);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -77,6 +80,13 @@ public class BaseActivity extends AppCompatActivity {
                         finish();
                         drawerLayout.closeDrawers();
                         break;
+                    case R.id.nav_logout:
+                        Intent abcIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(abcIntent);
+                        finish();
+                        drawerLayout.closeDrawers();
+                        break;
+
 
                 }
                 return false;

@@ -42,6 +42,7 @@ import android.widget.TextView;
 
 import com.example.simonh07.phlant.AlarmReceiver;
 import com.example.simonh07.phlant.Constants;
+import com.example.simonh07.phlant.Lobby;
 import com.example.simonh07.phlant.R;
 import com.example.simonh07.phlant.adapters.ViewPagerAdapter;
 import com.example.simonh07.phlant.adapters.WeatherRecyclerAdapter;
@@ -55,6 +56,7 @@ import com.example.simonh07.phlant.utils.Formatting;
 import com.example.simonh07.phlant.utils.UnitConvertor;
 import com.example.simonh07.phlant.widgets.AbstractWidgetProvider;
 import com.example.simonh07.phlant.widgets.DashClockWeatherExtension;
+import com.facebook.share.Share;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -199,6 +201,17 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         if (bundle != null && bundle.getBoolean("shouldRefresh")) {
             refreshWeather();
         }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent inten = new Intent(this, Lobby.class);
+        inten.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(inten);
+
+        finish();
     }
 
     public WeatherRecyclerAdapter getAdapter(int id) {
@@ -502,6 +515,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             temperature = Math.round(temperature);
         }
         Log.d("Temp",String.valueOf(temperature));
+        SharedPreferences.Editor editor = getSharedPreferences("Temperature", MODE_PRIVATE).edit();
+        editor.putString("Temp",String.valueOf(temperature) );
+        editor.apply();
 
         // Rain
         double rain = Double.parseDouble(todayWeather.getRain());
@@ -1154,4 +1170,5 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 return R.style.AppTheme_NoActionbar;
         }
     }
+
 }

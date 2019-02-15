@@ -23,6 +23,7 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.facebook.share.Share;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     private AccessTokenTracker accessTokenTracker;
     private ProfileTracker profileTracker;
     DatabaseReference ref;
-
+    SharedPreferences prefss,prefs1;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -58,40 +59,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ref = FirebaseDatabase.getInstance().getReference();
+        callbackManager = CallbackManager.Factory.create();
+         txtBirthday = (TextView) findViewById(R.id.TvBirthday);
+         txtEmail = (TextView)findViewById(R.id.TvEmail);
+        imgAvatar = (ImageView) findViewById(R.id.IvAvatar);
+        prefss = getSharedPreferences("Information",MODE_PRIVATE);
+        prefs1 = getSharedPreferences("Temperature",MODE_PRIVATE);
 
-
-
-      callbackManager = CallbackManager.Factory.create();
-      txtBirthday = (TextView) findViewById(R.id.TvBirthday);
-      txtEmail = (TextView)findViewById(R.id.TvEmail);
-      imgAvatar = (ImageView) findViewById(R.id.IvAvatar);
 
         loginButton = (LoginButton) findViewById(R.id.FbLogin);
-        accessTokenTracker = new AccessTokenTracker() {
-            @Override
-            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-                if(currentAccessToken == null)
-                {
-                    new GraphRequest(currentAccessToken, "me/permissions/", null, HttpMethod.DELETE, new GraphRequest.Callback() {
-                        @Override
-                        public void onCompleted(GraphResponse response) {
-                            LoginManager.getInstance().logOut();
-                            Intent intent = new Intent(LoginActivity.this,LoginActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                        }
-                    }).executeAsync();
 
-                }
-
-            }
-        };
-        profileTracker = new ProfileTracker() {
-            @Override
-            protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
-
-            }
-        };
 
         loginButton.setReadPermissions(Arrays.asList("public_profile","email"));
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -135,7 +112,33 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                if(currentAccessToken == null)
+                {
+                    new GraphRequest(currentAccessToken, "me/permissions/", null, HttpMethod.DELETE, new GraphRequest.Callback() {
+                        @Override
+                        public void onCompleted(GraphResponse response) {
+                            LoginManager.getInstance().logOut();
+                            Intent intent = new Intent(LoginActivity.this,LoginActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
 
+
+                        }
+                    }).executeAsync();
+
+                }
+
+            }
+        };
+        profileTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+
+            }
+        };
 
 
     }
@@ -144,7 +147,6 @@ public class LoginActivity extends AppCompatActivity {
         try{
 
             URL profile_Picture = new URL("https://graph.facebook.com/"+object.getString("id")+"/picture?width=250&height=250");
-
             Picasso.with(this).load(profile_Picture.toString()).into(imgAvatar);
             txtEmail.setText(object.getString("email")+"\n"+object.getString("first_name")+" " +object.getString("last_name"));
             Log.d("name",object.getString("first_name")+ " "+object.getString("last_name"));

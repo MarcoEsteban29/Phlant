@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -19,37 +18,37 @@
         android:roundIcon="@mipmap/plant"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".LoginActivity"> </activity>
+        <activity android:name=".LoginActivity"></activity>
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProvider300393110683135"
             android:exported="true" />
 
-        <activity android:name=".ChatBot"
+        <activity
+            android:name=".ChatBot"
             android:label="ChatBot"
-            android:theme="@style/AppTheme.NoActionbar"/>
-        <activity android:name=".Lobby"
-            android:theme="@style/AppTheme.NoActionbar"
-            android:label="Lobby"/>
-        <activity android:name=".AboutUs"
-            android:theme="@style/AppTheme.NoActionbar"
-            android:label="About Us"></activity>
-
-
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
+            android:name=".Lobby"
+            android:label="Lobby"
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
+            android:name=".AboutUs"
+            android:label="About Us"
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionbar"></activity>
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".activities.SettingsActivity"
             android:theme="@style/AppTheme" />
-
-
         <activity
             android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -59,11 +58,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.MapActivity"
             android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme.NoStatusBar" />
+
         <receiver android:name=".widgets.ExtensiveWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -91,6 +90,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/simple_widget" />
         </receiver>
+
         <service
             android:name=".widgets.DashClockWeatherExtension"
             android:icon="@drawable/ic_cloud_white_24dp"
@@ -117,13 +117,15 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".activities.GraphActivity"
             android:label="@string/action_graphs"
             android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme.NoActionbar" />
+
         <provider
-            android:name="com.example.simonh07.phlant.utils.StubContentProvider"
+            android:name=".utils.StubContentProvider"
             android:authorities="ccom.example.simonh07.phlant.authority"
             android:exported="true" />
     </application>
