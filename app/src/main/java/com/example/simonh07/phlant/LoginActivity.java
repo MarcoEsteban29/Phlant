@@ -2,6 +2,7 @@ package com.example.simonh07.phlant;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -141,12 +142,20 @@ public class LoginActivity extends AppCompatActivity {
 
     private void getData(JSONObject object) {
         try{
+
             URL profile_Picture = new URL("https://graph.facebook.com/"+object.getString("id")+"/picture?width=250&height=250");
 
             Picasso.with(this).load(profile_Picture.toString()).into(imgAvatar);
-
             txtEmail.setText(object.getString("email")+"\n"+object.getString("first_name")+" " +object.getString("last_name"));
-            txtBirthday.setText(object.getString("firs_name"));
+            Log.d("name",object.getString("first_name")+ " "+object.getString("last_name"));
+            Log.d("email",object.getString("email"));
+            Log.d("photo",profile_Picture.toString());
+            SharedPreferences.Editor editor = getSharedPreferences("Information", MODE_PRIVATE).edit();
+            editor.putString("name", object.getString("first_name")+ " "+object.getString("last_name"));
+            editor.putString("email",object.getString("email"));
+            editor.putString("photo",profile_Picture.toString() );
+            editor.apply();
+
 
         } catch (MalformedURLException e) {
             e.printStackTrace();

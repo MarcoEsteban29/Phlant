@@ -96,6 +96,7 @@ public class ChatBot extends BaseActivity implements AIListener {
                     aiRequest.setQuery(message);
                     new AsyncTask<AIRequest,Void,AIResponse>(){
 
+                        @SuppressLint("WrongThread")
                         @Override
                         protected AIResponse doInBackground(AIRequest... aiRequests) {
                             final AIRequest request = aiRequests[0];

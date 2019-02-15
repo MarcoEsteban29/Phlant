@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 public class Lobby extends BaseActivity {
     private TextView mTextMessage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

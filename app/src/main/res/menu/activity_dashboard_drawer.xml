@@ -12,6 +12,11 @@
             android:title="About Us" />
         <item
             android:id="@+id/nav_chatbot"
+            android:icon="@drawable/ic_magnify_white_24dp"
             android:title="ChatBot"/>
+        <item
+            android:id="@+id/nav_weather"
+            android:icon="@drawable/ic_cloud_white_24dp"
+            android:title="Weather"/>
     </group>
 </menu>
