@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProfileTracker profileTracker;
     DatabaseReference ref;
     SharedPreferences prefss,prefs1;
+    ImageView imageView;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -66,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         imgAvatar = (ImageView) findViewById(R.id.IvAvatar);
         prefss = getSharedPreferences("Information",MODE_PRIVATE);
         prefs1 = getSharedPreferences("Temperature",MODE_PRIVATE);
-
+        imageView = findViewById(R.id.backtolobby);
 
         loginButton = (LoginButton) findViewById(R.id.FbLogin);
 
@@ -78,7 +80,8 @@ public class LoginActivity extends AppCompatActivity {
                 mDialog = new ProgressDialog(LoginActivity.this);
                 mDialog.setMessage("Retrieving data...");
                 mDialog.show();
-                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+
+                Intent intent = new Intent(LoginActivity.this,Instructions.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 finish();
                 startActivity(intent);
@@ -135,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                     }).executeAsync();
 
                 }
+
 
             }
         };

@@ -734,14 +734,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             refreshWeather();
             return true;
         }
-        if (id == R.id.action_map) {
-            Intent intent = new Intent(MainActivity.this, MapActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.action_graphs) {
-            Intent intent = new Intent(MainActivity.this, GraphActivity.class);
-            startActivity(intent);
-        }
+//        if (id == R.id.action_map) {
+//            Intent intent = new Intent(MainActivity.this, MapActivity.class);
+//            startActivity(intent);
+//        }
+//        if (id == R.id.action_graphs) {
+//            Intent intent = new Intent(MainActivity.this, GraphActivity.class);
+//            startActivity(intent);
+      //  }
         if (id == R.id.action_search) {
             searchCities();
             return true;
@@ -754,10 +754,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.action_about) {
-            aboutDialog();
-            return true;
-        }
+//        if (id == R.id.action_about) {
+//            aboutDialog();
+//            return true;
+//        }
         return super.onOptionsItemSelected(item);
     }
 

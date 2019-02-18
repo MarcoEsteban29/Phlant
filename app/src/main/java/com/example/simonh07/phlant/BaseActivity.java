@@ -86,6 +86,12 @@ public class BaseActivity extends AppCompatActivity {
                         finish();
                         drawerLayout.closeDrawers();
                         break;
+                    case R.id.nav_instruct:
+                        Intent abcdIntent = new Intent(getApplicationContext(), Instructions.class);
+                        startActivity(abcdIntent);
+                        finish();
+                        drawerLayout.closeDrawers();
+                        break;
 
 
                 }

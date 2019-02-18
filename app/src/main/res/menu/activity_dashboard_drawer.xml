@@ -19,8 +19,14 @@
             android:icon="@drawable/ic_cloud_white_24dp"
             android:title="Weather"/>
         <item
+            android:id="@+id/nav_instruct"
+            android:icon="@drawable/refresh"
+            android:title="Instructions"/>
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/com_facebook_button_login_logo"
             android:title="Log Out"/>
+
+
     </group>
 </menu>

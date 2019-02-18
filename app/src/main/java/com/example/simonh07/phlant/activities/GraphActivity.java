@@ -16,10 +16,11 @@ import com.db.chart.model.LineSet;
 import com.db.chart.util.Tools;
 import com.db.chart.view.ChartView;
 import com.db.chart.view.LineChartView;
-import com.example.simonh07.phlant.R;
+
 import com.example.simonh07.phlant.models.Weather;
 import com.example.simonh07.phlant.tasks.ParseResult;
 import com.example.simonh07.phlant.utils.UnitConvertor;
+import com.example.simonh07.phlant.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

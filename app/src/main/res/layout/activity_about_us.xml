@@ -2,26 +2,64 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgapp2">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:layout_gravity="center"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_marginTop="100dp"
+            android:id="@+id/vision"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginStart="@dimen/activity_vertical_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="About Us"
+            android:textAllCaps="true"
+            android:textStyle="italic"
+            android:textAlignment="textStart"
+            android:text="
+Vision:
+
+
+ Phlant, an evangelizing arm of the amateur gardeners,is an application of planting indoors,
+offering quality planting information.It envisions its amateur gardeners to be informed,sensitive to the details of the plant and responsive to the needs of the plant
+"
+
             android:gravity="center"
             android:textColor="#1a1a1a"
             android:textSize="20sp" />
+<TextView
+android:layout_marginTop="100dp"
+    android:textAllCaps="true"
+    android:textStyle="italic"
+    android:gravity="center"
+    android:textColor="#1a1a1a"
+    android:textSize="20sp"
+    android:textAlignment="textStart"
+    android:layout_width="350dp"
+    android:text="
+Mission:
 
+
+
+In the light of this vision, we commit ourselves to:
+
+1) To provide information to the specifics of sustaining indoor plants.
+2) To provide first hand tutorial in planting to the amateur gardeners."
+    android:layout_height="wrap_content" />
+        <TextView
+        android:layout_marginTop="300dp"
+            android:textAllCaps="true"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:textColor="#1a1a1a"
+            android:textSize="20sp"
+            android:layout_width="350dp"
+            android:text="Developed by CRUZ.EVANGELIO.FABON"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </ScrollView>
 
