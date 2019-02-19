@@ -188,10 +188,10 @@ public class ChatBot extends BaseActivity implements AIListener {
 
                 int msgCount = adapter.getItemCount();
                 int lastVisiblePosition = linearLayoutManager.findLastCompletelyVisibleItemPosition();
-
-                if (msgCount%2 == 0) {
+                if (lastVisiblePosition == -1 ||
+                        (positionStart >= (msgCount - 1) &&
+                                lastVisiblePosition == (positionStart - 1))) {
                     recyclerView.scrollToPosition(positionStart);
-
                 }
                 if(msgCount == 30)
                 {

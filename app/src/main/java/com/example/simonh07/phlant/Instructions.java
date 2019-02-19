@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 public class Instructions extends AppCompatActivity {
     TextView textView; ImageView imageView;
+    boolean finish =false;
     int count=0;
     String text[] = {"Facebook Account is needed for access in the application PHLANT."
             ,"Enter your Username and Password to proceed."
@@ -24,7 +25,7 @@ public class Instructions extends AppCompatActivity {
             ,"On pressing the Navigation button on left side of the screen, it contains the Home, About Us, ChatBot, Weather, Instruction, and Log Out. When Home is pressed, you will go back to the Lobby. When About Us is pressed, it will show the mission, vision, and the developers. The ChatBot assists you on your inquiries about the application PHLANT. When Weather is pressed, the weather forecast on your current location or area. if you do not understand how to use the application, just click the Instruction button to redo the steps on how to use the application. The Log Out button will log off your Facebook Account on the application."
             ,"For your questions about the application, the ChatBot will try its best to answer your questions. That is all for this Application. Start Now. Enjoy!"};
     int icons[]= {R.drawable.login,R.drawable.facebooklogin,R.drawable.confirmation,R.drawable.weather,R.drawable.weatherbutton,
-    R.drawable.lobby,R.drawable.navigationdraweer,R.drawable.chatbot};
+            R.drawable.lobby,R.drawable.navigationdraweer,R.drawable.chatbot};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +35,15 @@ public class Instructions extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(icons.length==count){
-                    Intent next = new Intent(getApplicationContext(), MainActivity.class);
+                if(icons.length==count && !finish){
+                    Intent next = new Intent(getApplicationContext(), LoginActivity.class);
+                    next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(next);
+                    finish();
+                    finish = true;
+                }
+                else if(icons.length==count && finish){
+                    Intent next = new Intent(getApplicationContext(), LoginActivity.class);
                     next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(next);
                     finish();

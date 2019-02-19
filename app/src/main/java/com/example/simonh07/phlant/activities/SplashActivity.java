@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.simonh07.phlant.Instructions;
 import com.example.simonh07.phlant.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -12,7 +13,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, Instructions.class);
         startActivity(intent);
         finish();
     }
