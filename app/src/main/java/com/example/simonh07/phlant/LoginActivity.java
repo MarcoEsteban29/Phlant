@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 mDialog.setMessage("Retrieving data...");
                 mDialog.show();
 
-                Intent intent = new Intent(LoginActivity.this,Instructions.class);
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 finish();
                 startActivity(intent);

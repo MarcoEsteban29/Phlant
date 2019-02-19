@@ -43,7 +43,7 @@ public class Instructions extends AppCompatActivity {
                     finish = true;
                 }
                 else if(icons.length==count && finish){
-                    Intent next = new Intent(getApplicationContext(), LoginActivity.class);
+                    Intent next = new Intent(getApplicationContext(), MainActivity.class);
                     next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(next);
                     finish();
