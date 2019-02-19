@@ -18,15 +18,15 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mView = itemView;
 
     }
-    public void setDetails (Context ctx, String title, String description,String image,String URL){
+    public void setDetails (Context ctx, String title, String description,String image){
         TextView mTitleTv = mView.findViewById(R.id.rTitleTv);
         TextView mDetailTv = mView.findViewById(R.id.rDescriptionTv);
         ImageView mImageIv = mView.findViewById(R.id.rImageView);
-        TextView mURLTv = mView.findViewById(R.id.rURLTv);
+
 
         mTitleTv.setText(title);
         mDetailTv.setText(description);
-        mURLTv.setText(URL);
+
         Picasso.get().load(image).into(mImageIv);
 
     }

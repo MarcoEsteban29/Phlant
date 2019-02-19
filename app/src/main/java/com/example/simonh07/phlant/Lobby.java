@@ -37,7 +37,7 @@ public class Lobby extends BaseActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.getMenu().getItem(0).setChecked(true);
         SharedPreferences sharedPreferences = getSharedPreferences("Temperature", MODE_PRIVATE);
-        button = findViewById(R.id.Share);
+
         shareDialog = new ShareDialog(this);
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -53,12 +53,7 @@ public class Lobby extends BaseActivity {
             mRef = mFirebaseDatebase.getReference("18");
             Log.d("Condish", mRef.getKey());
         }
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
     }
 
     @Override
@@ -82,15 +77,15 @@ public class Lobby extends BaseActivity {
                 ) {
                     @Override
                     protected void populateViewHolder(final ViewHolder viewHolder, final Model model, final int position) {
-                        viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription(), model.getImage(),model.getURL());
+                        viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription(), model.getImage());
 
                         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 if (ShareDialog.canShow(ShareLinkContent.class)) {
                                     ShareLinkContent linkContent = new ShareLinkContent.Builder()
-
-                                            .setContentUrl(Uri.parse("https://www.youtube.com/watch?v=DxNt7xV5aII"))
+                                            .setQuote(model.getTitle())
+                                            .setContentUrl(Uri.parse(model.getURL()))
                                             .build();
                                     shareDialog.show(linkContent);  // Show facebook ShareDialog
                                 }
