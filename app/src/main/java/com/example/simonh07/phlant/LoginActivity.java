@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     private AccessTokenTracker accessTokenTracker;
     private ProfileTracker profileTracker;
     DatabaseReference ref;
+    boolean loggedin;
     SharedPreferences prefss,prefs1;
     ImageView imageView;
     @Override
@@ -80,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 mDialog = new ProgressDialog(LoginActivity.this);
                 mDialog.setMessage("Retrieving data...");
                 mDialog.show();
-
+                loggedin = true;
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 finish();
@@ -126,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onCompleted(GraphResponse response) {
                            prefss.edit().clear().apply();
 
-
+                            loggedin = false;
                             LoginManager.getInstance().logOut();
                             Intent intent = new Intent(LoginActivity.this,LoginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -154,11 +155,13 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
-        Intent intent = new Intent (this,LoginActivity.class);
+    if(loggedin){
+        Intent intent = new Intent (this,Lobby.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
+    }
+
     }
 
 

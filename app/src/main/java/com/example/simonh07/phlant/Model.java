@@ -1,7 +1,22 @@
 package com.example.simonh07.phlant;
 
 public class Model {
-    String title, image, description;
+    String title;
+    String image;
+    String description;
+    String url;
+
+
+    public String getURL() {
+        return url;
+    }
+
+    public void setURL(String URL) {
+        this.url = URL;
+    }
+
+
+
 
     public Model() {}
 
