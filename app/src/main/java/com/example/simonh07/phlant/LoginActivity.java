@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onCompleted(GraphResponse response) {
                            prefss.edit().clear().apply();
 
-                            loggedin = false;
+
                             LoginManager.getInstance().logOut();
                             Intent intent = new Intent(LoginActivity.this,LoginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -155,12 +155,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-    if(loggedin){
+        if(loggedin){
         Intent intent = new Intent (this,Lobby.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
-    }
+        }
 
     }
 

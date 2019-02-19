@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -55,7 +56,8 @@ public class ChatBot extends BaseActivity implements AIListener {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.getMenu().getItem(2).setChecked(true);
         ActivityCompat.requestPermissions(ChatBot.this, new String[]{Manifest.permission.RECORD_AUDIO},1);
-
+        SharedPreferences preferences = getSharedPreferences("Information",MODE_PRIVATE);
+        name = preferences.getString("name","");
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         editText = (EditText)findViewById(R.id.editText);
@@ -66,7 +68,7 @@ public class ChatBot extends BaseActivity implements AIListener {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.getLayoutManager().setMeasurementCacheEnabled(false);
 
-        ref = FirebaseDatabase.getInstance().getReference();
+        ref = FirebaseDatabase.getInstance().getReference(name);
         ref.keepSynced(true);
 
         final AIConfiguration config = new AIConfiguration("29f661d2d2254a8c9c6f520e04f3dec3",
@@ -195,7 +197,7 @@ public class ChatBot extends BaseActivity implements AIListener {
                 }
                 if(msgCount == 30)
                 {
-                    ref.child("chat").removeValue();
+                    ref.removeValue();
                 }
 
             }
